@@ -29,6 +29,15 @@ jobs:
       with:
         fetch-depth: 0
 
+    # Add DX license file
+    - name: AddDXLicense
+      shell: cmd
+      run: |
+        set "SRC=%GITHUB_WORKSPACE%\DevExpress_License.txt"
+        set "DEST=%APPDATA%\DevExpress"
+        if not exist "%DEST%" mkdir "%DEST%"
+        copy "%SRC%" "%DEST%" /Y
+
     # Install the .NET Core workload
     - name: Install .NET Core
       uses: actions/setup-dotnet@v4
@@ -37,8 +46,9 @@ jobs:
 
     # Add local NuGet source
     - name: Add NuGet
-      run: dotnet nuget add source "C:\a\DashboardCICDExport\DashboardCICDExport\Packages" --name LocalSource
-    
+      run: dotnet nuget add source "%GITHUB_WORKSPACE%\Packages" --name LocalSource
+      shell: cmd
+      
     # Restore
     - name: Restore
       run: dotnet restore ./Sample
