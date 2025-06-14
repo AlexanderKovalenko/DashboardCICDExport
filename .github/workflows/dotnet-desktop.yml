@@ -37,8 +37,9 @@ jobs:
 
     # Add local NuGet source
     - name: Add NuGet
-      run: dotnet nuget add source "C:\a\DashboardCICDExport\DashboardCICDExport\Packages" --name LocalSource
-    
+      run: dotnet nuget add source "%GITHUB_WORKSPACE%\Packages" --name LocalSource
+      shell: cmd
+      
     # Restore
     - name: Restore
       run: dotnet restore ./Sample
