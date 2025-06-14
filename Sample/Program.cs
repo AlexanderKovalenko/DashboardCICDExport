@@ -7,7 +7,7 @@ namespace DashboardCICDExport {
 
             exp.DataLoading += Exp_DataLoading;
 
-            exp.ExportToImage("dashboard1.xml", "output.png");
+            exp.ExportToImage(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\dashboard1.xml"), "output.png");
 
             Console.WriteLine("Ready");
             Console.ReadLine();

@@ -47,12 +47,12 @@ jobs:
     - name: Build
       run: dotnet build ./Sample
 
-    # Run
-    - name: Run app to generate image
+    # Run app to generate image
+    - name: Run
       run: dotnet run --project ./Sample/DashboardCICDExport.csproj
     
-    # Upload
-    - name: Upload PNG artifact
+    # Upload PNG artifact
+    - name: Upload 
       uses: actions/upload-artifact@v4
       with:
         name: generated-image
