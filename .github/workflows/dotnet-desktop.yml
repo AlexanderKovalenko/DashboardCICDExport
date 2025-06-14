@@ -37,7 +37,7 @@ jobs:
 
     # Add local NuGet source
     - name: Add NuGet
-      run: dotnet nuget add source ./Packages --name LocalSource
+      run: dotnet nuget add source "C:\a\DashboardCICDExport\DashboardCICDExport\Packages" --name LocalSource
     
     # Restore
     - name: Restore
